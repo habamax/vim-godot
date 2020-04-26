@@ -12,11 +12,23 @@ func! godot#run_main_scene() abort
 endfunc
 
 
-
 func! s:run_scene(scene_name) abort
-    exe printf("Start %s %s",
+    " if there is vim-dispatch installed, use it
+    if exists(":Start")
+        let cmd = "Start "
+    elseif executable("cmd.exe")
+        let cmd = "!cmd.exe /c start "
+    elseif has("mac") " XXX: need test
+        let cmd = "open "
+    elseif has("unix") " XXX: need test
+        let cmd = "xdg-open "
+    else
+        let cmd = "!"
+    endif
+    exe printf("%s%s %s",
+                \ cmd,
                 \ get(g:, "godot_executable", "godot"),
-                \ a:scene_name)
+                \ fnameescape(a:scene_name))
 endfunc
 
 
