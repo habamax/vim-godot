@@ -1,0 +1,38 @@
+﻿= WIP: Godot + Vim
+:author: Maxim Kim
+:compress:
+:experimental:
+:icons: font
+:autofit-option:
+:source-highlighter: rouge
+:rouge-style: github
+:!source-linenums-option:
+:revdate: 2020-04-26
+:imagesdir: images
+:pdf-style: default
+:doctype: article
+:chapter-label:
+
+
+== Intro
+
+* GDScript syntax highlighing and optional folding
+* Command to run current scene
+* Command to run main scene
+
+
+image::img_README_1.png[]
+
+
+== Folding
+
+To enable folding, `setlocal foldmethod=expr` in your `.vimrc`.
+
+[source,vim]
+------------------------------------------------------------------------------
+augroup godot | au!
+    au FileType gdscript setlocal foldmethod=expr
+augroup END
+------------------------------------------------------------------------------
+
+image::vim-gdscript-folds.gif[]
