@@ -16,9 +16,17 @@
 
 == Intro
 
+Godot engine has rock solid built-in editor but I still feel more comfortable
+within my (g)(n)vim environment.
+
+This plugin provides:
+
 * GDScript syntax highlighing and optional folding
-* Command to run current scene
-* Command to run main scene
+* Command to run current scene: `:GodotRunCurrent`
+* Command to run main scene: `:GodotRun`
+
+For IDE-like completion I suggest to try https://github.com/neoclide/coc.nvim[coc.nvim] plugin.
+(It does really great job providing gdscript completion for me).
 
 
 image::img_README_1.png[]
