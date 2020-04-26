@@ -28,7 +28,7 @@ This plugin provides:
 For IDE-like completion I suggest to try https://github.com/neoclide/coc.nvim[coc.nvim] plugin.
 (It does really great job providing gdscript completion for me).
 
-video::https://www.youtube.com/watch?v=ALXN4HJ5bsg[youtube]
+https://www.youtube.com/watch?v=ALXN4HJ5bsg
 
 image::img_README_1.png[]
 
