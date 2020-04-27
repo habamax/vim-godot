@@ -23,8 +23,8 @@ This plugin provides:
 
 * GDScript syntax highlighing and optional folding
 * Command to run current scene: `:GodotRunCurrent`
-* Select and run a scene with standard vim tab completion (default is a main scene): `:GodotRun`
-* Select and run a scene with a FZF (if installed): `:GodotRunFZF`
+* Command to select and run a scene with standard vim tab completion (default is a main scene): `:GodotRun`
+* Command to select and run a scene with a FZF (if installed): `:GodotRunFZF`
 
 All commands are buffer local, works only in gdscript buffer.
 
