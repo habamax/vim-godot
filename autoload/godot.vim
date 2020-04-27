@@ -22,7 +22,11 @@ endfunc
 " Run arbitrary scene
 func! s:run_scene(scene_name) abort
     " if there is vim-dispatch installed, use it
-    if exists(":Start")
+    " vim-dispatch can't Start application in windows neovim :(
+    " https://github.com/tpope/vim-dispatch/issues/297
+    if has('win32') && has('nvim')
+        let cmd = "!start "
+    elseif exists(":Start")
         let cmd = "Start "
     elseif executable("cmd.exe")
         let cmd = "!cmd.exe /c start "
