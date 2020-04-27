@@ -28,8 +28,9 @@ func! GDScriptFoldLevel() abort
         return -1
     endif
 
-    let indent = indent(v:lnum) / &sw
-    let indent_next = indent(nextnonblank(v:lnum+1))/&sw
+    let sw = shiftwidth()
+    let indent = indent(v:lnum) / sw
+    let indent_next = indent(nextnonblank(v:lnum+1)) / sw
 
     if indent_next > indent && line =~ ':\s*$'
         return ">" . indent_next
