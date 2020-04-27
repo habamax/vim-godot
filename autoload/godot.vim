@@ -83,11 +83,11 @@ func! godot#fzf_run_scene(...)
     let project_path = fnamemodify(findfile("project.godot", ".;"), ":h")
 
     if executable('fdfind')
-        let scenes = printf('fdfind . "%s" -e tscn --type f --hidden --follow --no-ignore-vcs --exclude .git', project_path)
+        let scenes = 'fdfind -e tscn --type f --hidden --follow --no-ignore-vcs --exclude .git'
     elseif executable('fd')
-        let scenes = printf('fd . "%s" -e tscn --type f --hidden --follow --no-ignore-vcs --exclude .git', project_path)
+        let scenes = 'fd -e tscn --type f --hidden --follow --no-ignore-vcs --exclude .git'
     elseif executable('rg')
-        let scenes ='rg -g *.tscn --files --no-ignore-vcs ' . project_path
+        let scenes ='rg -g *.tscn --files --no-ignore-vcs '
     else 
         let scenes = split(globpath(project_path, "**/*.tscn"), "\n")
     endif
@@ -95,6 +95,7 @@ func! godot#fzf_run_scene(...)
     return fzf#run(fzf#wrap('scenes', {
                 \ 'source':  scenes,
                 \ 'sink':    'GodotRun',
+                \ 'dir':    project_path,
                 \ 'options': '+m --prompt="Scenes> "'
                 \}, 0))
 
