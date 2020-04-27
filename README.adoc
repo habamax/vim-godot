@@ -26,6 +26,8 @@ This plugin provides:
 * Select and run a scene with standard vim tab completion (default is a main scene): `:GodotRun`
 * Select and run a scene with a FZF (if installed): `:GodotRunFZF`
 
+All commands are buffer local, works only in gdscript buffer.
+
 For IDE-like completion I suggest to try https://github.com/neoclide/coc.nvim[coc.nvim] plugin.
 (It does really great job providing gdscript completion for me).
 
@@ -34,15 +36,47 @@ https://www.youtube.com/watch?v=ALXN4HJ5bsg
 image::img_README_1.png[]
 
 
-== Folding
+== Select And Run Scene
 
-To enable folding, `setlocal foldmethod=expr` in your `.vimrc`.
+* Use `:GodotRun <TAB>` to select a scene and run it. `:GodotRun<CR>` will run main scene.
+* Use `:GodotRunFZF<CR>` to select a scene using FZF (if installed) and run it.
+
+image::https://user-images.githubusercontent.com/234774/80359547-a5fc6c00-8886-11ea-9cdd-bc027d46db4c.gif[]
+
+
+== Settings
+
+No default mappings are provided.
+
+I personally use `.vim/after/ftplugin/gdscript.vim` file to setup my mappings:
 
 [source,vim]
 ------------------------------------------------------------------------------
+" to use folding provided by plugin
+setlocal foldmethod=expr
+
+" recommended by godot style guide
+setlocal noexpandtab tabstop=4
+
+nnoremap <buffer> <F5> :GodotRun<CR>
+nnoremap <buffer> <F6> :GodotRunCurrent<CR>
+nnoremap <buffer> <F7> :GodotRunFZF<CR>
+------------------------------------------------------------------------------
+
+Or you can use autocommand in your `.vimrc` (example):
+
+[source,vim]
+------------------------------------------------------------------------------
+func! GodotSettings() abort
+    setlocal foldmethod=expr
+    setlocal noexpandtab tabstop=4
+    nnoremap <buffer> <F5> :GodotRun<CR>
+    nnoremap <buffer> <F6> :GodotRunCurrent<CR>
+    nnoremap <buffer> <F7> :GodotRunFZF<CR>
+endfunc
 augroup godot | au!
-    au FileType gdscript setlocal foldmethod=expr
-augroup END
+    au FileType gdscript call GodotSettings()
+augroup end
 ------------------------------------------------------------------------------
 
 image::vim-gdscript-folds.gif[]
