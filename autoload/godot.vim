@@ -7,7 +7,7 @@ endfunc
 
 " Run scene
 func! godot#run(...) abort
-    if a:0
+    if a:0 && !empty(a:1)
         if a:1 =~ '\.tscn$'
             call s:run_scene(a:1)
         else
