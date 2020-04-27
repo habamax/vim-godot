@@ -1,17 +1,25 @@
 " Run current scene: 
-func! godot#run_current_scene() abort
+func! godot#run_current() abort
     let scene_name = s:find_scene_name()
     call s:run_scene(scene_name)
 endfunc
 
 
-" Run main scene
-func! godot#run_main_scene() abort
-    let main_scene = s:find_main_scene()
-    call s:run_scene(main_scene)
+" Run scene
+func! godot#run(...) abort
+    if a:0
+        if a:1 =~ '\.tscn$'
+            call s:run_scene(a:1)
+        else
+            call s:run_scene(a:1 . '.tscn')
+        endif
+    else
+        call s:run_scene(s:find_main_scene())
+    endif
 endfunc
 
 
+" Run arbitrary scene
 func! s:run_scene(scene_name) abort
     " if there is vim-dispatch installed, use it
     if exists(":Start")
@@ -55,4 +63,39 @@ endfunc
 " script name == to current file?
 func! s:find_scene_name() abort
     return expand("%:r").".tscn"
+endfunc
+
+
+" Basic completion for godot scene selection :GodotRun <tab>
+func! godot#scene_complete(A, L, P) abort
+    let project_path = fnamemodify(findfile("project.godot", ".;"), ":h")
+    return split(globpath(project_path, '**/*' . a:A . '*.tscn'), "\n")
+endfunc
+
+
+" FZF completion for godot scene selection :GodotRunFZF<CR>
+func! godot#fzf_run_scene(...)
+    if !exists('*fzf#run') || !executable('fzf')
+        echom "fzf is not installed!"
+        return
+    endif
+
+    let project_path = fnamemodify(findfile("project.godot", ".;"), ":h")
+
+    if executable('fdfind')
+        let scenes = printf("fdfind . '%s' -e tscn --type f --hidden --follow --no-ignore-vcs --exclude .git", project_path)
+    elseif executable('fd')
+        let scenes = printf("fd . '%s' -e tscn --type f --hidden --follow --no-ignore-vcs --exclude .git", project_path)
+    elseif executable('rg')
+        let scenes ='rg -g *.tscn --files --no-ignore-vcs ' . project_path
+    else 
+        let scenes = split(globpath(project_path, "**/*.tscn"), "\n")
+    endif
+
+    return fzf#run(fzf#wrap('scenes', {
+                \ 'source':  scenes,
+                \ 'sink':    'GodotRun',
+                \ 'options': '+m --prompt="Scenes> "'
+                \}, 0))
+
 endfunc

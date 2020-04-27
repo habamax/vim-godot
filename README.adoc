@@ -23,7 +23,8 @@ This plugin provides:
 
 * GDScript syntax highlighing and optional folding
 * Command to run current scene: `:GodotRunCurrent`
-* Command to run main scene: `:GodotRun`
+* Select and run a scene with standard vim tab completion (default is a main scene): `:GodotRun`
+* Select and run a scene with a FZF (if installed): `:GodotRunFZF`
 
 For IDE-like completion I suggest to try https://github.com/neoclide/coc.nvim[coc.nvim] plugin.
 (It does really great job providing gdscript completion for me).
@@ -45,3 +46,8 @@ augroup END
 ------------------------------------------------------------------------------
 
 image::vim-gdscript-folds.gif[]
+
+
+== TODO
+
+* Add syntax for built-in classes 

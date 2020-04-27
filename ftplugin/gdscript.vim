@@ -49,8 +49,9 @@ if !exists("g:godot_executable")
 endif
 
 
-command! -buffer GodotRunCurrent call godot#run_current_scene()
-command! -buffer GodotRun call godot#run_main_scene()
+command! -buffer GodotRunCurrent call godot#run_current()
+command! -buffer -nargs=? -complete=customlist,godot#scene_complete GodotRun call godot#run(<q-args>)
+command! -buffer GodotRunFZF call godot#fzf_run_scene()
 
 let &cpo = s:keepcpo
 unlet s:keepcpo
