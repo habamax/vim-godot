@@ -33,8 +33,6 @@ For IDE-like completion I suggest to try https://github.com/neoclide/coc.nvim[co
 
 https://www.youtube.com/watch?v=ALXN4HJ5bsg
 
-image::img_README_1.png[]
-
 
 == Select And Run Scene
 
@@ -78,8 +76,6 @@ augroup godot | au!
     au FileType gdscript call GodotSettings()
 augroup end
 ------------------------------------------------------------------------------
-
-image::vim-gdscript-folds.gif[]
 
 
 == TODO
