@@ -28,8 +28,8 @@ func! s:run_scene(scene_name) abort
         let cmd = "!start "
     elseif exists("$WSLENV") && !exists("$TMUX")
         let cmd = "!cmd.exe /c start "
-    elseif exists(":Start")
-        let cmd = "Start "
+    elseif exists(":Spawn")
+        let cmd = "Spawn "
     elseif executable("cmd.exe")
         let cmd = "!cmd.exe /c start "
     elseif has("mac") " XXX: need test
@@ -94,7 +94,7 @@ func! godot#fzf_run_scene(...)
         let scenes = 'fd -e tscn --type f --hidden --follow --no-ignore-vcs --exclude .git'
     elseif executable('rg')
         let scenes ='rg -g *.tscn --files --no-ignore-vcs '
-    else 
+    else
         let scenes = split(globpath(project_path, "**/*.tscn"), "\n")
     endif
 
