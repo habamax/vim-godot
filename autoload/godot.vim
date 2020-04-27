@@ -26,6 +26,8 @@ func! s:run_scene(scene_name) abort
     " https://github.com/tpope/vim-dispatch/issues/297
     if has('win32') && has('nvim')
         let cmd = "!start "
+    elseif exists("$WSLENV") && !exists("$TMUX")
+        let cmd = "!cmd.exe /c start "
     elseif exists(":Start")
         let cmd = "Start "
     elseif executable("cmd.exe")
