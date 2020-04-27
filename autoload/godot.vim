@@ -31,9 +31,9 @@ func! s:run_scene(scene_name) abort
     elseif executable("cmd.exe")
         let cmd = "!cmd.exe /c start "
     elseif has("mac") " XXX: need test
-        let cmd = "open "
+        let cmd = "!open "
     elseif has("unix") " XXX: need test
-        let cmd = "xdg-open "
+        let cmd = "!xdg-open "
     else
         let cmd = "!"
     endif
