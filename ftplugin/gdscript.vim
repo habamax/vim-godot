@@ -1,5 +1,5 @@
 " Vim filetype plugin file
-" Language:	gdscript (Godot game engine)
+" Language: gdscript (Godot game engine)
 " Maintainer: Maxim Kim <habamax@gmail.com>
 
 if exists("b:did_ftplugin") | finish | endif
