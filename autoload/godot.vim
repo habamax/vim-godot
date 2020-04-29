@@ -7,15 +7,21 @@ endfunc
 
 " Run scene
 func! godot#run(...) abort
-    if a:0 && !empty(a:1)
-        if a:1 =~ '\.tscn$'
-            call s:run_scene(a:1)
+    let cwd = getcwd()
+    try
+        exe 'lcd ' . s:project_path()
+        if a:0 && !empty(a:1)
+            if a:1 =~ '\.tscn$'
+                call s:run_scene(a:1)
+            else
+                call s:run_scene(a:1 . '.tscn')
+            endif
         else
-            call s:run_scene(a:1 . '.tscn')
+            call s:run_scene(s:find_main_scene())
         endif
-    else
-        call s:run_scene(s:find_main_scene())
-    endif
+    finally
+        exe 'lcd ' . cwd
+    endtry
 endfunc
 
 
@@ -61,6 +67,12 @@ func! s:find_main_scene() abort
 endfunc
 
 
+" Return project path
+func! s:project_path() abort
+    return fnamemodify(findfile("project.godot", ".;"), ":h")
+endfunc
+
+
 " Assuming:
 " * Scene base name is the same as script base name;
 " * Both are in the same directory.
@@ -74,8 +86,7 @@ endfunc
 
 " Basic completion for godot scene selection :GodotRun <tab>
 func! godot#scene_complete(A, L, P) abort
-    let project_path = fnamemodify(findfile("project.godot", ".;"), ":h")
-    return split(globpath(project_path, '**/*' . a:A . '*.tscn'), "\n")
+    return split(globpath(s:project_path(), '**/*' . a:A . '*.tscn'), "\n")
 endfunc
 
 
@@ -86,7 +97,7 @@ func! godot#fzf_run_scene(...)
         return
     endif
 
-    let project_path = fnamemodify(findfile("project.godot", ".;"), ":h")
+    let project_path = s:project_path()
 
     if executable('fdfind')
         let scenes = 'fdfind -e tscn --type f --hidden --follow --no-ignore-vcs --exclude .git'
