@@ -52,7 +52,7 @@ syn match gdscriptClass "\h\w*" display contained
 
 syn match gdscriptNode "\$\h\w*\%(/\h\w*\)*"
 
-syn match gdscriptSpecial "[():=]"
+syn match gdscriptSpecial "[():]"
 
 syn match gdscriptComment "#.*$" contains=@Spell
 
