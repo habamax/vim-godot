@@ -4,7 +4,7 @@
 " Filenames:    *.gd
 
 if exists("b:current_syntax")
-	finish
+    finish
 endif
 
 syn keyword gdscriptConditional if else elif match switch case is as not and or
@@ -101,7 +101,6 @@ hi def link gdscriptNode PreProc
 hi def link gdscriptType Type
 hi def link gdscriptNumber Number
 hi def link gdscriptSpecial Special
-
 
 
 let b:current_syntax = "gdscript"
