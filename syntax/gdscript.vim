@@ -97,7 +97,7 @@ hi def link gdscriptString String
 hi def link gdscriptQuotes String
 hi def link gdscriptTripleQuotes String
 hi def link gdscriptEscape Special
-hi link gdscriptNode PreProc
+hi def link gdscriptNode PreProc
 hi def link gdscriptType Type
 hi def link gdscriptNumber Number
 hi def link gdscriptSpecial Special
