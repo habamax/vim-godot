@@ -11,6 +11,9 @@ syn keyword gdscriptConditional if else elif match switch case is as not and or
 syn keyword gdscriptRepeat for while break continue in
 syn keyword gdscriptConstant PI TAU INF NAN
 syn keyword gdscriptType void bool int float
+
+syn match gdscriptFunctionCall "\v<\w*>\s*(\()@="
+
 syn keyword gdscriptBuiltinFunction sin cos tan sinh cosh tanh asin acos atan atan2
 syn keyword gdscriptBuiltinFunction sqrt fmod fposmod
 syn keyword gdscriptBuiltinFunction floor ceil round
@@ -86,7 +89,8 @@ hi def link gdscriptFunction Function
 hi def link gdscriptExtend Define
 hi def link gdscriptClass Define
 hi def link gdscriptBuiltinFunction Function
-hi def link gdscriptBuiltinClass Structure
+hi def link gdscriptFunctionCall Function
+hi def link gdscriptBuiltinClass Define
 hi def link gdscriptBuiltinStruct Typedef
 hi def link gdscriptComment Comment
 hi def link gdscriptString String
