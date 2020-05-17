@@ -1,5 +1,5 @@
 " Vim indent file
-" Language:	gdscript (Godot game engine)
+" Language: gdscript (Godot game engine)
 " Maintainer: Maxim Kim <habamax@gmail.com>
 " Based on python indent file. Probably should just reuse it?
 
@@ -10,8 +10,8 @@ endif
 let b:did_indent = 1
 
 " Some preliminary settings
-setlocal nolisp		" Make sure lisp indenting doesn't supersede us
-setlocal autoindent	" indentexpr isn't much help otherwise
+setlocal nolisp         " Make sure lisp indenting doesn't supersede us
+setlocal autoindent     " indentexpr isn't much help otherwise
 
 setlocal indentexpr=GetGdscriptIndent(v:lnum)
 setlocal indentkeys+=<:>,=elif,=except
@@ -25,7 +25,7 @@ set cpo&vim
 
 " Come here when loading the script the first time.
 
-let s:maxoff = 50	" maximum number of lines to look backwards for ()
+let s:maxoff = 50       " maximum number of lines to look backwards for ()
 
 function GetGdscriptIndent(lnum)
     " If this line is explicitly joined: If the previous line was also joined,
@@ -51,62 +51,9 @@ function GetGdscriptIndent(lnum)
         return 0
     endif
 
-    " call cursor(plnum, 1)
 
-    " Identing inside parentheses can be very slow, regardless of the searchpair()
-    " timeout, so let the user disable this feature if he doesn't need it
-    let disable_parentheses_indenting = get(g:, "gdscript_indent_disable_parentheses_indenting", 0)
-
-    if disable_parentheses_indenting == 1
-        let plindent = indent(plnum)
-        let plnumstart = plnum
-    else
-        " searchpair() can be slow sometimes, limit the time to 150 msec or what is
-        " put in g:pyindent_searchpair_timeout
-        let searchpair_stopline = 0
-        let searchpair_timeout = get(g:, 'gdscript_indent_searchpair_timeout', 150)
-
-        " If the previous line is inside parenthesis, use the indent of the starting
-        " line.
-        " Trick: use the non-existing "dummy" variable to break out of the loop when
-        " going too far back.
-        let parlnum = searchpair('(\|{\|\[', '', ')\|}\|\]', 'nbW',
-                    \ "line('.') < " . (plnum - s:maxoff) . " ? dummy :"
-                    \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
-                    \ . " =~ '\\(Comment\\|Todo\\|String\\)$'",
-                    \ searchpair_stopline, searchpair_timeout)
-        if parlnum > 0
-            let plindent = indent(parlnum)
-            let plnumstart = parlnum
-        else
-            let plindent = indent(plnum)
-            let plnumstart = plnum
-        endif
-
-        " When inside parenthesis: If at the first line below the parenthesis add
-        " one 'shiftwidth', otherwise same as previous line.
-        " my_var = (
-        "     a
-        "     + b
-        "     + c
-        " )
-        let p = searchpair('(\|{\|\[', '', ')\|}\|\]', 'bW',
-                    \ "line('.') < " . (a:lnum - s:maxoff) . " ? dummy :"
-                    \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
-                    \ . " =~ '\\(Comment\\|Todo\\|String\\)$'",
-                    \ searchpair_stopline, searchpair_timeout)
-        if p > 0
-            if p == plnum
-                return indent(plnum) + shiftwidth()
-            endif
-            if plnumstart == p && getline(a:lnum) !~ '^\s*[)}\]]'
-                return indent(plnum)
-            endif
-            return plindent
-        endif
-
-    endif
-
+    let plindent = indent(plnum)
+    let plnumstart = plnum
 
     " Get the line and remove a trailing comment.
     " Use syntax highlighting attributes when possible.
@@ -140,6 +87,18 @@ function GetGdscriptIndent(lnum)
         endwhile
     endif
 
+    " When "inside" parenthesis: If at the first line below the parenthesis add
+    " one 'shiftwidth' ("inside" is simplified and not really checked)
+    " my_var = (
+    "     a
+    "     + b
+    "     + c
+    " )
+    if pline =~ '[({\[]\s*$'
+        return indent(plnum) + shiftwidth()
+    endif
+
+
     " If the previous line ended with a colon, indent this line
     if pline =~ ':\s*$'
         return plindent + shiftwidth()
@@ -163,13 +122,13 @@ function GetGdscriptIndent(lnum)
             if getline(lnum) =~ '^\s*\(try\|except\)\>'
                 let ind = indent(lnum)
                 if ind >= indent(a:lnum)
-                    return -1	" indent is already less than this
+                    return -1   " indent is already less than this
                 endif
-                return ind	" line up with previous try or except
+                return ind      " line up with previous try or except
             endif
             let lnum = lnum - 1
         endwhile
-        return -1		" no matching "try"!
+        return -1               " no matching "try"!
     endif
 
     " If the current line begins with a header keyword, dedent
