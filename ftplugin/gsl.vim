@@ -13,14 +13,6 @@ let b:undo_ftplugin = '|setlocal suffixesadd<'
 setlocal suffixesadd=.shader
 setlocal noexpandtab
 
-if !exists("g:godot_executable")
-    if executable('godot')
-        let g:godot_executable = 'godot'
-    elseif executable('godot.exe')
-        let g:godot_executable = 'godot.exe'
-    endif
-endif
-
 command! -buffer -nargs=? -complete=customlist,godot#scene_complete GodotRun call godot#run(<q-args>)
 command! -buffer GodotRunFZF call godot#fzf_run_scene()
 

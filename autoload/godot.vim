@@ -39,29 +39,35 @@ endfunc
 
 " Run arbitrary scene
 func! s:run_scene(scene_name) abort
+    if !exists('g:godot_executable')
+        if executable('godot')
+            let g:godot_executable = 'godot'
+        elseif executable('godot.exe')
+            let g:godot_executable = 'godot.exe'
+        else
+            echomsg 'Unable to find Godot executable, please specify g:godot_executable'
+            return
+        endif
+    endif
+
+    let godot_command = g:godot_executable . ' ' . shellescape(a:scene_name)
     let s:last_scene_run = a:scene_name
     " if there is vim-dispatch installed, use it
     " vim-dispatch can't Start application in windows neovim :(
     " https://github.com/tpope/vim-dispatch/issues/297
     if has('win32') && has('nvim')
-        let cmd = "!start "
-    elseif exists("$WSLENV") && !exists("$TMUX")
-        let cmd = "!cmd.exe /c start "
-    elseif exists(":Spawn")
-        let cmd = "Spawn "
-    elseif executable("cmd.exe")
-        let cmd = "!cmd.exe /c start "
+        call system('start ' . godot_command)
+    elseif executable('cmd.exe') && !exists('$TMUX')
+        call system('cmd.exe /c start ' . godot_command)
+    elseif exists(':Spawn')
+        Spawn godot_command
+    elseif exists(':AsyncRun')
+         call asyncrun#run('', {}, godot_command)
     elseif has("mac") " XXX: need test
-        let cmd = "!open "
-    elseif has("unix") " XXX: need test
-        let cmd = "!xdg-open "
+        call system('open ' . godot_command)
     else
-        let cmd = "!"
+        call system(godot_command)
     endif
-    exe printf("%s%s %s",
-                \ cmd,
-                \ get(g:, "godot_executable", "godot"),
-                \ fnameescape(a:scene_name))
 endfunc
 
 
