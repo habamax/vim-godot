@@ -1,6 +1,6 @@
 " Vim syntax file for Godot shading language
 " Language:     gsl
-" Maintainer:   Maxim Kim <habamax@gmail.com>
+" Maintainer:   Shatur95 <genaloner@gmail.com>, Maxim Kim <habamax@gmail.com>
 " Filenames:    *.shader
 
 if exists("b:current_syntax")
