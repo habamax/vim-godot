@@ -7,12 +7,15 @@ if exists("b:current_syntax")
     finish
 endif
 
-syn keyword gdscriptConditional if else elif match switch case is as not and or
+syn keyword gdscriptConditional if else elif match switch case
 syn keyword gdscriptRepeat for while break continue in
-syn keyword gdscriptConstant PI TAU INF NAN
 syn keyword gdscriptType void bool int float
+syn match gdscriptConstant "\<[_A-Z]\+[0-9_A-Z]*\>"
 
-syn match gdscriptFunctionCall "\v<\w*>\s*(\()@="
+syn keyword gdscriptOperator is as not and or
+syn match gdscriptOperator "\V&&\|||\|!\|&\|^\||\|~\|*\|/\|%\|+\|-\|=\|<\|>"
+
+syn match gdscriptDelimiter "\V(\|)\|[\|]\|{\|}"
 
 syn keyword gdscriptBuiltinFunction sin cos tan sinh cosh tanh asin acos atan atan2
 syn keyword gdscriptBuiltinFunction sqrt fmod fposmod
@@ -30,25 +33,33 @@ syn keyword gdscriptBuiltinFunction parse_json to_json
 syn keyword gdscriptBuiltinFunction str int
 syn keyword gdscriptBuiltinFunction preload yield
 
+"" TODO: add all classnames
 syn keyword gdscriptBuiltinClass Input InputEventAction
 syn keyword gdscriptBuiltinClass OS
 syn keyword gdscriptBuiltinClass Tween Sprite Texture Node Color
 syn keyword gdscriptBuiltinStruct Color
 
-syn keyword gdscriptKeyword false null true self 
+syn keyword gdscriptKeyword null self owner parent
+syn keyword gdscriptBoolean false true
 
 syn keyword gdscriptStatement class_name nextgroup=gdscriptClass skipwhite
-syn keyword gdscriptStatement class func nextgroup=gdscriptFunction skipwhite
+syn keyword gdscriptStatement class func signal nextgroup=gdscriptFunction skipwhite
+syn keyword gdscriptStatement setget nextgroup=gdscriptSetGet,gdscriptSetGetSeparator skipwhite
 syn keyword gdscriptStatement extends nextgroup=gdscriptExtend skipwhite
 syn keyword gdscriptStatement remote master puppet remotesync mastersync puppetsync sync
-syn keyword gdscriptStatement setget return pass
-syn keyword gdscriptStatement static const enum var signal
+syn keyword gdscriptStatement return pass
+syn keyword gdscriptStatement static const enum var
 syn keyword gdscriptStatement breakpoint assert
 syn keyword gdscriptStatement onready export
+
+syn match gdscriptSetGet "\h\w*" nextgroup=gdscriptSetGetSeparator display contained skipwhite
+syn match gdscriptSetGetSeparator "," nextgroup=gdscriptSetGet display contained skipwhite
 
 syn match gdscriptFunction "\h\w*" display contained
 syn match gdscriptExtend "\h\w*" display contained
 syn match gdscriptClass "\h\w*" display contained
+
+syn match gdscriptFunctionCall "\v<\w*>\s*(\()@="
 
 syn match gdscriptNode "\$\h\w*\%(/\h\w*\)*"
 
@@ -74,20 +85,21 @@ syn match gdscriptNumber "\<0[bB][01]\+[Ll]\=\>"
 syn match gdscriptNumber "\<\%([1-9]\d*\|0\)[Ll]\=\>"
 syn match gdscriptNumber "\<\d\+[jJ]\>"
 syn match gdscriptNumber "\<\d\+[eE][+-]\=\d\+[jJ]\=\>"
-syn match gdscriptNumber
-\ "\<\d\+\.\%([eE][+-]\=\d\+\)\=[jJ]\=\%(\W\|$\)\@="
-syn match   gdscriptNumber
-\ "\%(^\|\W\)\zs\d*\.\d\+\%([eE][+-]\=\d\+\)\=[jJ]\=\>"
+syn match gdscriptNumber "\<\d\+\.\%([eE][+-]\=\d\+\)\=[jJ]\=\%(\W\|$\)\@="
+syn match gdscriptNumber "\%(^\|\W\)\zs\d*\.\d\+\%([eE][+-]\=\d\+\)\=[jJ]\=\>"
 
 
 hi def link gdscriptStatement Statement
 hi def link gdscriptKeyword Keyword
 hi def link gdscriptConditional Conditional
+hi def link gdscriptBoolean Boolean
+hi def link gdscriptOperator Operator
 hi def link gdscriptRepeat Repeat
 hi def link gdscriptConstant Constant
 hi def link gdscriptFunction Function
+hi def link gdscriptSetGet Function
 hi def link gdscriptExtend Define
-hi def link gdscriptClass Define
+hi def link gdscriptClass Type
 hi def link gdscriptBuiltinFunction Function
 hi def link gdscriptFunctionCall Function
 hi def link gdscriptBuiltinClass Define
