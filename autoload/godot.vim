@@ -55,14 +55,14 @@ func! s:run_scene(scene_name) abort
     " if there is vim-dispatch installed, use it
     " vim-dispatch can't Start application in windows neovim :(
     " https://github.com/tpope/vim-dispatch/issues/297
-    if has('win32') && has('nvim')
+    if exists(':AsyncRun')
+        call asyncrun#run('', {}, godot_command)
+    elseif has('win32') && has('nvim')
         call system('start ' . godot_command)
     elseif executable('cmd.exe') && !exists('$TMUX')
         call system('cmd.exe /c start ' . godot_command)
     elseif exists(':Spawn')
         execute 'Spawn ' . godot_command
-    elseif exists(':AsyncRun')
-        call asyncrun#run('', {}, godot_command)
     elseif has("mac") " XXX: need test
         call system('open ' . godot_command)
     else
