@@ -79,8 +79,3 @@ augroup godot | au!
     au FileType gdscript call GodotSettings()
 augroup end
 ------------------------------------------------------------------------------
-
-
-== TODO
-
-* Add syntax for built-in classes 
