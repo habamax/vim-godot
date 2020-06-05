@@ -10,18 +10,13 @@ endif
 syn keyword gdscriptConditional if else elif match switch case
 syn keyword gdscriptRepeat for while break continue
 
+syn match gdscriptClass "\v<\u\w+>"
 syn match gdscriptConstant "\<[_A-Z]\+[0-9_A-Z]*\>"
 
 syn keyword gdscriptOperator is as not and or in
 syn match gdscriptOperator "\V&&\|||\|!\|&\|^\||\|~\|*\|/\|%\|+\|-\|=\|<\|>\|:"
 
 syn match gdscriptDelimiter "\V(\|)\|[\|]\|{\|}"
-
-"" TODO: add all classnames or make it generic?
-syn keyword gdscriptBuiltinClass Input InputEventAction
-syn keyword gdscriptBuiltinClass OS
-syn keyword gdscriptBuiltinClass Tween Sprite Texture Node Color
-syn keyword gdscriptBuiltinStruct Color
 
 syn keyword gdscriptKeyword null self owner parent
 syn keyword gdscriptBoolean false true
@@ -31,10 +26,11 @@ syn keyword gdscriptStatement return pass
 syn keyword gdscriptStatement static const enum
 syn keyword gdscriptStatement breakpoint assert
 syn keyword gdscriptStatement onready export
+syn keyword gdscriptStatement class_name extends
 
 syn keyword gdscriptStatement var nextgroup=gdscriptTypeDecl skipwhite
-syn match gdscriptTypeDecl "\h\w*:\s*\h\w*" contains=gdscriptOperator,gdscriptType contained skipwhite
-syn match gdscriptTypeDecl "->\s*\h\w*" contains=gdscriptOperator,gdscriptType skipwhite
+syn match gdscriptTypeDecl "\h\w*:\s*\h\w*" contains=gdscriptOperator,gdscriptType,gdscriptClass contained skipwhite
+syn match dscriptTypeDecl "->\s*\h\w*" contains=gdscriptOperator,gdscriptType,gdscriptClass skipwhite
 syn keyword gdscriptType void bool int float contained
 
 syn keyword gdscriptStatement setget nextgroup=gdscriptSetGet,gdscriptSetGetSeparator skipwhite
@@ -46,12 +42,6 @@ syn match gdscriptFunctionName "\h\w*" nextgroup=gdscriptFunctionParams display 
 syn match gdscriptFunctionParams "(.*)" contains=gdscriptDelimiter,gdscriptTypeDecl display contained skipwhite
 
 syn match gdscriptFunctionCall "\v<\w*>\s*(\()@="
-
-syn keyword gdscriptStatement extends nextgroup=gdscriptExtend skipwhite
-syn match gdscriptExtend "\h\w*" display contained
-
-syn keyword gdscriptStatement class_name nextgroup=gdscriptClass skipwhite
-syn match gdscriptClass "\h\w*" display contained
 
 syn match gdscriptNode "\$\h\w*\%(/\h\w*\)*"
 
@@ -91,10 +81,8 @@ hi def link gdscriptRepeat Repeat
 hi def link gdscriptConstant Constant
 hi def link gdscriptFunctionName Function
 hi def link gdscriptSetGet Function
-hi def link gdscriptExtend Define
 hi def link gdscriptClass Type
 hi def link gdscriptFunctionCall Function
-hi def link gdscriptBuiltinClass Define
 hi def link gdscriptBuiltinStruct Typedef
 hi def link gdscriptComment Comment
 hi def link gdscriptString String
