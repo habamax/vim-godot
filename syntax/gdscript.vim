@@ -87,6 +87,8 @@ syn match gdscriptNumber "\<\d\+[eE][+-]\=\d\+[jJ]\=\>"
 syn match gdscriptNumber "\<\d\+\.\%([eE][+-]\=\d\+\)\=[jJ]\=\%(\W\|$\)\@="
 syn match gdscriptNumber "\%(^\|\W\)\zs\d*\.\d\+\%([eE][+-]\=\d\+\)\=[jJ]\=\>"
 
+" XXX, TODO, etc
+syn keyword gdscriptTodo TODO XXX FIXME HACK NOTE BUG contained containedin=gdscriptComment
 
 hi def link gdscriptStatement Statement
 hi def link gdscriptKeyword Keyword
@@ -113,6 +115,7 @@ hi def link gdscriptType Type
 hi def link gdscriptNumber Number
 hi def link gdscriptDelimiter Delimiter
 hi def link gdscriptBlockStart Special
+hi def link gdscriptTodo Todo
 
 
 let b:current_syntax = "gdscript"
