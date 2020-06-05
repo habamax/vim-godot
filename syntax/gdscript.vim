@@ -63,8 +63,6 @@ syn match gdscriptFunctionCall "\v<\w*>\s*(\()@="
 
 syn match gdscriptNode "\$\h\w*\%(/\h\w*\)*"
 
-syn match gdscriptSpecial "[():]"
-
 syn match gdscriptComment "#.*$" contains=@Spell
 
 syn region gdscriptString matchgroup=gdscriptQuotes
@@ -77,6 +75,7 @@ syn region gdscriptString matchgroup=gdscriptTripleQuotes
 
 syn match gdscriptEscape +\\[abfnrtv'"\\]+ contained
 syn match gdscriptEscape "\\$"
+syn match gdscriptBlockStart ":\s*$"
 
 " Numbers
 syn match gdscriptNumber "\<0[oO]\=\o\+[Ll]\=\>"
@@ -112,7 +111,8 @@ hi def link gdscriptEscape Special
 hi def link gdscriptNode PreProc
 hi def link gdscriptType Type
 hi def link gdscriptNumber Number
-hi def link gdscriptSpecial Special
+hi def link gdscriptDelimiter Delimiter
+hi def link gdscriptBlockStart Special
 
 
 let b:current_syntax = "gdscript"
