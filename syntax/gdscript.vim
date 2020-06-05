@@ -8,11 +8,11 @@ if exists("b:current_syntax")
 endif
 
 syn keyword gdscriptConditional if else elif match switch case
-syn keyword gdscriptRepeat for while break continue in
+syn keyword gdscriptRepeat for while break continue
 
 syn match gdscriptConstant "\<[_A-Z]\+[0-9_A-Z]*\>"
 
-syn keyword gdscriptOperator is as not and or
+syn keyword gdscriptOperator is as not and or in
 syn match gdscriptOperator "\V&&\|||\|!\|&\|^\||\|~\|*\|/\|%\|+\|-\|=\|<\|>\|:"
 
 syn match gdscriptDelimiter "\V(\|)\|[\|]\|{\|}"
