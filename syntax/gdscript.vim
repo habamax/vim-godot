@@ -13,7 +13,7 @@ syn keyword gdscriptType void bool int float
 syn match gdscriptConstant "\<[_A-Z]\+[0-9_A-Z]*\>"
 
 syn keyword gdscriptOperator is as not and or
-syn match gdscriptOperator "\V&&\|||\|!\|&\|^\||\|~\|*\|/\|%\|+\|-\|=\|<\|>"
+syn match gdscriptOperator "\V&&\|||\|!\|&\|^\||\|~\|*\|/\|%\|+\|-\|=\|<\|>\|:"
 
 syn match gdscriptDelimiter "\V(\|)\|[\|]\|{\|}"
 
