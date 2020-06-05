@@ -23,6 +23,7 @@ This plugin provides:
 
 * GDScript syntax highlighing and optional folding
 * Command to run current scene: `:GodotRunCurrent`
+* Command to run last scene: `:GodotRunLast`
 * Command to select and run a scene with standard vim tab completion (default is a main scene): `:GodotRun`
 * Command to select and run a scene with a FZF (if installed): `:GodotRunFZF`
 
@@ -56,6 +57,7 @@ setlocal foldmethod=expr
 " recommended by godot style guide
 setlocal noexpandtab tabstop=4
 
+nnoremap <buffer> <F4> :GodotRunLast<CR>
 nnoremap <buffer> <F5> :GodotRun<CR>
 nnoremap <buffer> <F6> :GodotRunCurrent<CR>
 nnoremap <buffer> <F7> :GodotRunFZF<CR>
@@ -68,6 +70,7 @@ Or you can use autocommand in your `.vimrc` (example):
 func! GodotSettings() abort
     setlocal foldmethod=expr
     setlocal noexpandtab tabstop=4
+    nnoremap <buffer> <F4> :GodotRunLast<CR>
     nnoremap <buffer> <F5> :GodotRun<CR>
     nnoremap <buffer> <F6> :GodotRunCurrent<CR>
     nnoremap <buffer> <F7> :GodotRunFZF<CR>

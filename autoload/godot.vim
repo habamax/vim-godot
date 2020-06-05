@@ -1,4 +1,16 @@
-" Run current scene: 
+let s:last_scene_run = ''
+
+" Run last scene
+func! godot#run_last() abort
+    if s:last_scene_run == ''
+        echom "No scene was run yet!"
+        return
+    endif
+    call s:run_scene(s:last_scene_run)
+endfunc
+
+
+" Run current scene
 func! godot#run_current() abort
     let scene_name = s:find_scene_name()
     call s:run_scene(scene_name)
@@ -27,6 +39,7 @@ endfunc
 
 " Run arbitrary scene
 func! s:run_scene(scene_name) abort
+    let s:last_scene_run = a:scene_name
     " if there is vim-dispatch installed, use it
     " vim-dispatch can't Start application in windows neovim :(
     " https://github.com/tpope/vim-dispatch/issues/297

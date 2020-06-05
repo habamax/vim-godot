@@ -50,6 +50,7 @@ endif
 
 
 command! -buffer GodotRunCurrent call godot#run_current()
+command! -buffer GodotRunLast call godot#run_last()
 command! -buffer -nargs=? -complete=customlist,godot#scene_complete GodotRun call godot#run(<q-args>)
 command! -buffer GodotRunFZF call godot#fzf_run_scene()
 
