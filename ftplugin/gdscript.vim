@@ -41,15 +41,6 @@ func! GDScriptFoldLevel() abort
 
 endfunc
 
-if !exists("g:godot_executable")
-    if executable('godot')
-        let g:godot_executable = 'godot'
-    elseif executable('godot.exe')
-        let g:godot_executable = 'godot.exe'
-    endif
-endif
-
-
 command! -buffer GodotRunCurrent call godot#run_current()
 command! -buffer GodotRunLast call godot#run_last()
 command! -buffer -nargs=? -complete=customlist,godot#scene_complete GodotRun call godot#run(<q-args>)
