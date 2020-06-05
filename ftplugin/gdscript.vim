@@ -11,9 +11,9 @@ let b:undo_ftplugin = 'setlocal cinkeys<'
       \ . '|setlocal indentkeys<'
       \ . '|setlocal commentstring<'
       \ . '|setlocal suffixesadd<'
-      \ . '|setlocal expandtab<'
       \ . '|setlocal foldexpr<'
       \ . '|setlocal foldignore<'
+      \ . '|setlocal noexpandtab<'
 
 setlocal cinkeys-=0#
 setlocal indentkeys-=0#
@@ -21,6 +21,7 @@ setlocal suffixesadd=.gd
 setlocal commentstring=#\ %s
 setlocal foldignore=
 setlocal foldexpr=GDScriptFoldLevel()
+setlocal noexpandtab
 
 func! GDScriptFoldLevel() abort
     let line = getline(v:lnum)
