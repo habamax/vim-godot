@@ -60,9 +60,9 @@ func! s:run_scene(scene_name) abort
     elseif executable('cmd.exe') && !exists('$TMUX')
         call system('cmd.exe /c start ' . godot_command)
     elseif exists(':Spawn')
-        Spawn godot_command
+        execute 'Spawn ' . godot_command
     elseif exists(':AsyncRun')
-         call asyncrun#run('', {}, godot_command)
+        call asyncrun#run('', {}, godot_command)
     elseif has("mac") " XXX: need test
         call system('open ' . godot_command)
     else
