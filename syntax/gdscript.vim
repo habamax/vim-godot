@@ -33,7 +33,7 @@ syn keyword gdscriptStatement breakpoint assert
 syn keyword gdscriptStatement onready export
 
 syn keyword gdscriptStatement var nextgroup=gdscriptTypeDecl skipwhite
-syn match gdscriptTypeDecl "\h\w*:\s*\h\w*" contains=gdscriptType contained skipwhite
+syn match gdscriptTypeDecl "\h\w*:\s*\h\w*" contains=gdscriptOperator,gdscriptType contained skipwhite
 syn match gdscriptTypeDecl "->\s*\h\w*" contains=gdscriptOperator,gdscriptType skipwhite
 syn keyword gdscriptType void bool int float contained
 
