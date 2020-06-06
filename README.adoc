@@ -21,7 +21,7 @@ This plugin provides:
 ** Select and run a scene with standard vim tab completion (default is a main scene): `:GodotRun`
 ** Select and run a scene with a FZF (if installed): `:GodotRunFZF`
 
-All commands are buffer local, works only in `gdscript` or `gsl` buffers.
+All commands are local to buffer -- available only in `gdscript` or `gsl` buffers.
 
 For IDE-like completion I suggest to try https://github.com/neoclide/coc.nvim[coc.nvim] plugin.
 (It does really great job providing gdscript completion for me).
