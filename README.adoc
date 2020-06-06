@@ -1,17 +1,9 @@
-﻿= WIP: Godot + Vim
-:author: Maxim Kim
-:compress:
+﻿= Godot + Vim
 :experimental:
 :icons: font
 :autofit-option:
-:source-highlighter: rouge
-:rouge-style: github
 :!source-linenums-option:
-:revdate: 2020-04-26
 :imagesdir: images
-:pdf-style: default
-:doctype: article
-:chapter-label:
 
 
 == Intro
@@ -21,11 +13,13 @@ within my (g)(n)vim environment.
 
 This plugin provides:
 
-* GDScript syntax highlighing and optional folding
-* Command to run current scene: `:GodotRunCurrent`
-* Command to run last scene: `:GodotRunLast`
-* Command to select and run a scene with standard vim tab completion (default is a main scene): `:GodotRun`
-* Command to select and run a scene with a FZF (if installed): `:GodotRunFZF`
+* GDScript and GSL syntax highlighing
+* Folding
+* Run commands:
+** Run current scene: `:GodotRunCurrent`
+** Run last scene: `:GodotRunLast`
+** Select and run a scene with standard vim tab completion (default is a main scene): `:GodotRun`
+** Select and run a scene with a FZF (if installed): `:GodotRunFZF`
 
 All commands are buffer local, works only in gdscript buffer.
 
