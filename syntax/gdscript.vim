@@ -25,13 +25,17 @@ syn keyword gdscriptStatement remote master puppet remotesync mastersync puppets
 syn keyword gdscriptStatement return pass
 syn keyword gdscriptStatement static const enum
 syn keyword gdscriptStatement breakpoint assert
-syn keyword gdscriptStatement onready export
+syn keyword gdscriptStatement onready
 syn keyword gdscriptStatement class_name extends
+
+syn keyword gdscriptType void bool int float contained
 
 syn keyword gdscriptStatement var nextgroup=gdscriptTypeDecl skipwhite
 syn match gdscriptTypeDecl "\h\w*\s*:\s*\h\w*" contains=gdscriptOperator,gdscriptType,gdscriptClass contained skipwhite
-syn match gscriptTypeDecl "->\s*\h\w*" contains=gdscriptOperator,gdscriptType,gdscriptClass skipwhite
-syn keyword gdscriptType void bool int float contained
+syn match gdscriptTypeDecl "->\s*\h\w*" contains=gdscriptOperator,gdscriptType,gdscriptClass skipwhite
+
+syn keyword gdscriptStatement export nextgroup=gdscriptExportTypeDecl skipwhite
+syn match gdscriptExportTypeDecl "(.\{-}[,)]" contains=gdscriptOperator,gdscriptType,gdscriptClass,gdscriptDelimiter contained skipwhite
 
 syn keyword gdscriptStatement setget nextgroup=gdscriptSetGet,gdscriptSetGetSeparator skipwhite
 syn match gdscriptSetGet "\h\w*" nextgroup=gdscriptSetGetSeparator display contained skipwhite
