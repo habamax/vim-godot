@@ -29,7 +29,7 @@ syn keyword gdscriptStatement onready export
 syn keyword gdscriptStatement class_name extends
 
 syn keyword gdscriptStatement var nextgroup=gdscriptTypeDecl skipwhite
-syn match gdscriptTypeDecl "\h\w*:\s*\h\w*" contains=gdscriptOperator,gdscriptType,gdscriptClass contained skipwhite
+syn match gdscriptTypeDecl "\h\w*\s*:\s*\h\w*" contains=gdscriptOperator,gdscriptType,gdscriptClass contained skipwhite
 syn match gscriptTypeDecl "->\s*\h\w*" contains=gdscriptOperator,gdscriptType,gdscriptClass skipwhite
 syn keyword gdscriptType void bool int float contained
 
