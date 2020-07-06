@@ -127,3 +127,28 @@ Manual::
         ** `ftdetect`
         ** `ftplugin`
         ** ... etc
+
+
+== Setting up coc.nvim for godot 3.2.2+
+
+
+. Install https://github.com/neoclide/coc.nvim[coc.nvim], make sure it does general completion for you
+. Open `:CocConfig` and add following lines:
++
+[source,json]
+------------------------------------------------------------------------------
+{
+    "languageserver": {
+        "godot": {
+            "host": "127.0.0.1",
+            "filetypes": ["gdscript"],
+            "port": 6008
+        }
+    }
+}
+------------------------------------------------------------------------------
+. Save and restart
+
+NOTE: This is not a comprehensive `coc.nvim` setup guide. It just works for me
+and hopefully would work for you. For other vim/neovim language server client
+implementations setup consult their documentation.
