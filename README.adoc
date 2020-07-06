@@ -71,3 +71,60 @@ augroup godot | au!
     au FileType gdscript call GodotSettings()
 augroup end
 ------------------------------------------------------------------------------
+
+
+== Installation
+
+Using plugin manager::
+    Follow your plugin manager documentation, for example, link:https://github.com/junegunn/vim-plug[vim-plug] does it this way:
++
+[source,vim]
+------------------------------------------------------------------------------
+" Specify a directory for plugins
+call plug#begin('~/.vim/plugged')
+
+Plug 'habamax/vim-godot'
+
+" ... other plugins ...
+
+" Initialize plugin system
+call plug#end()
+------------------------------------------------------------------------------
+
+Manual with git::
+    Clone this repo to your vim/nvim packages directory:
++
+.Vim on Linux or OSX
+[source,sh]
+------------------------------------------------------------------------------
+git clone https://github.com/habamax/vim-godot ~/.vim/pack/plugins/start/vim-godot
+------------------------------------------------------------------------------
++
+.Neovim on Linux or OSX
+[source,sh]
+------------------------------------------------------------------------------
+git clone https://github.com/habamax/vim-godot ~/.config/nvim/pack/plugins/start/vim-godot
+------------------------------------------------------------------------------
++
+.Vim on Windows
+[source,sh]
+------------------------------------------------------------------------------
+git clone https://github.com/habamax/vim-godot C:/Users/username/vimfiles/pack/plugins/start/vim-godot <.>
+------------------------------------------------------------------------------
+<.> Change `username` to your user name
++
+.Neovim on Windows
+[source,sh]
+------------------------------------------------------------------------------
+git clone https://github.com/habamax/vim-godot C:/Users/username/AppData/Local/nvim/pack/plugins/start/vim-godot <.>
+------------------------------------------------------------------------------
+<.> Change `username` to your user name
+
+Manual::
+    * Download zip archive (available in menu:Code[Download ZIP])
+    * Unpack it to appropriate folder defined in `Manual with git`
+    * Make sure that contents of the archive is in `.../start/vim-godot` directory:
+        ** `autoload`
+        ** `ftdetect`
+        ** `ftplugin`
+        ** ... etc
