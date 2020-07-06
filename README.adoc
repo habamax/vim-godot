@@ -109,15 +109,15 @@ git clone https://github.com/habamax/vim-godot ~/.config/nvim/pack/plugins/start
 .Vim on Windows
 [source,sh]
 ------------------------------------------------------------------------------
-git clone https://github.com/habamax/vim-godot C:/Users/username/vimfiles/pack/plugins/start/vim-godot <.>
+git clone https://github.com/habamax/vim-godot C:/Users/USERNAME/vimfiles/pack/plugins/start/vim-godot <.>
 ------------------------------------------------------------------------------
 +
 .Neovim on Windows
 [source,sh]
 ------------------------------------------------------------------------------
-git clone https://github.com/habamax/vim-godot C:/Users/username/AppData/Local/nvim/pack/plugins/start/vim-godot <.>
+git clone https://github.com/habamax/vim-godot C:/Users/USERNAME/AppData/Local/nvim/pack/plugins/start/vim-godot <.>
 ------------------------------------------------------------------------------
-<.> Change `username` to your user name
+<.> Change `USERNAME` to your user name
 
 Manual::
     * Download zip archive (available in menu:Code[Download ZIP])
