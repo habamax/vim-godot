@@ -53,11 +53,11 @@ syn match gdscriptComment "#.*$" contains=@Spell,gdscriptTodo
 
 syn region gdscriptString matchgroup=gdscriptQuotes
       \ start=+[uU]\=\z(['"]\)+ end="\z1" skip="\\\\\|\\\z1"
-      \ contains=pythonEscape,@Spell
+      \ contains=gdscriptEscape,@Spell
 
 syn region gdscriptString matchgroup=gdscriptTripleQuotes
       \ start=+[uU]\=\z('''\|"""\)+ end="\z1" keepend
-      \ contains=pythonEscape,@Spell
+      \ contains=gdscriptEscape,@Spell
 
 syn match gdscriptEscape +\\[abfnrtv'"\\]+ contained
 syn match gdscriptEscape "\\$"
