@@ -23,8 +23,8 @@ This plugin provides:
 
 All commands are local to buffer -- available only in `gdscript` or `gsl` buffers.
 
-For IDE-like completion I suggest to try https://github.com/neoclide/coc.nvim[coc.nvim] plugin.
-(It does really great job providing gdscript completion for me).
+For IDE-like completion I suggest to try https://github.com/ycm-core/YouCompleteMe[YouCompleteMe] or https://github.com/neoclide/coc.nvim[coc.nvim] plugin.
+(Both do a really great job providing gdscript completion for me).
 
 https://www.youtube.com/watch?v=ALXN4HJ5bsg
 
@@ -129,10 +129,41 @@ Manual::
         ** ... etc
 
 
+== Setting up YouCompleteMe for godot 3.2.2+
+
+. Install and set up YCM according to https://github.com/ycm-core/YouCompleteMe#installation[it's documentation].
+(i.e. install with package manager then run `./install.py`).
+
+. Make sure general completion works for you.
+
+. Follow https://github.com/ycm-core/lsp-examples[instructions for enabling godot].
+
+Or you can just add this to your vimrc:
+
+[source, vim]
+------------------------------------------------------------------------------
+if !has_key( g:, 'ycm_language_server' )
+  let g:ycm_language_server = []
+endif
+
+let g:ycm_language_server += [
+  \   {
+  \     'name': 'godot',
+  \     'filetypes': [ 'gdscript' ],
+  \     'project_root_files': [ 'project.godot' ],
+  \     'port': 6008
+  \   }
+  \ ]
+------------------------------------------------------------------------------
+
+NOTE: This is not a comprehensive `YouCompleteMe` setup guide. It just works
+for me and hopefully would work for you.
+
+
 == Setting up coc.nvim for godot 3.2.2+
 
 
-. Install https://github.com/neoclide/coc.nvim[coc.nvim], make sure it does general completion for you
+. Install https://github.com/neoclide/coc.nvim[coc.nvim], make sure it does general completion for you.
 . Open `:CocConfig` and add following lines:
 +
 [source,json]
@@ -150,5 +181,4 @@ Manual::
 . Save and restart
 
 NOTE: This is not a comprehensive `coc.nvim` setup guide. It just works for me
-and hopefully would work for you. For other vim/neovim language server client
-implementations setup consult their documentation.
+and hopefully would work for you.
