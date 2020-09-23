@@ -82,11 +82,14 @@ hi def link gdscriptConditional Conditional
 hi def link gdscriptBoolean Boolean
 hi def link gdscriptOperator Operator
 hi def link gdscriptRepeat Repeat
-hi def link gdscriptConstant Constant
-hi def link gdscriptFunctionName Function
 hi def link gdscriptSetGet Function
-hi def link gdscriptClass Type
-hi def link gdscriptFunctionCall Function
+if get(g:, "godot_ext_hl", v:true)
+    hi def link gdscriptFunctionName Function
+    hi def link gdscriptClass Type
+    hi def link gdscriptFunctionCall Function
+    hi def link gdscriptDelimiter Delimiter
+    hi def link gdscriptConstant Constant
+endif
 hi def link gdscriptBuiltinStruct Typedef
 hi def link gdscriptComment Comment
 hi def link gdscriptString String
@@ -96,7 +99,6 @@ hi def link gdscriptEscape Special
 hi def link gdscriptNode PreProc
 hi def link gdscriptType Type
 hi def link gdscriptNumber Number
-hi def link gdscriptDelimiter Delimiter
 hi def link gdscriptBlockStart Special
 hi def link gdscriptTodo Todo
 
