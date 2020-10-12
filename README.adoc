@@ -129,7 +129,7 @@ Manual::
         ** ... etc
 
 
-== Setting up YouCompleteMe for godot 3.2.2+
+== Setting up YouCompleteMe for Godot 3.2.2+
 
 . Install and set up YCM according to https://github.com/ycm-core/YouCompleteMe#installation[it's documentation].
 (i.e. install with package manager then run `./install.py`).
@@ -160,7 +160,7 @@ NOTE: This is not a comprehensive `YouCompleteMe` setup guide. It just works
 for me and hopefully would work for you.
 
 
-== Setting up coc.nvim for godot 3.2.2+
+== Setting up coc.nvim for Godot 3.2.2+
 
 
 . Install https://github.com/neoclide/coc.nvim[coc.nvim], make sure it does general completion for you.
