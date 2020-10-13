@@ -105,7 +105,13 @@ endfunc
 
 " Basic completion for godot scene selection :GodotRun <tab>
 func! godot#scene_complete(A, L, P) abort
-    return split(globpath(s:project_path(), '**/*' . a:A . '*.tscn'), "\n")
+    if empty(a:A)
+        return split(globpath(s:project_path(), '**/*.tscn'), "\n")
+    elseif exists("*matchfuzzy")
+        return split(globpath(s:project_path(), '**/*.tscn'), "\n")->matchfuzzy(a:A)
+    else
+        return split(globpath(s:project_path(), '**/*' . a:A . '*.tscn'), "\n")
+    endif
 endfunc
 
 
