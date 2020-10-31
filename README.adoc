@@ -182,3 +182,29 @@ for me and hopefully would work for you.
 
 NOTE: This is not a comprehensive `coc.nvim` setup guide. It just works for me
 and hopefully would work for you.
+
+== Setting up ale for Godot 3.2.2+
+
+
+. Install https://github.com/dense-analysis/ale[ale], make sure it does general
+completion for you and register the Godot LSP server as follows in your vimrc:
++
+[source,vim]
+------------------------------------------------------------------------------
+" Enable ALE auto completion globally
+let g:ale_completion_enabled = 1
+
+" Allow ALE to autoimport completion entries from LSP servers
+let g:ale_completion_autoimport = 1
+
+" Register LSP server for Godot:
+call ale#linter#Define('gdscript', {
+\   'name': 'godot',
+\   'lsp': 'socket',
+\   'address': '127.0.0.1:6008',
+\   'project_root': 'project.godot',
+\})
+------------------------------------------------------------------------------
+. Save and restart
+
+NOTE: This is not a comprehensive ALE setup guide. Make sure to adjust it to your needs.
