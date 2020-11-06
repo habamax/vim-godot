@@ -18,7 +18,7 @@ syn match gdscriptOperator "\V&&\|||\|!\|&\|^\||\|~\|*\|/\|%\|+\|-\|=\|<\|>\|:"
 
 syn match gdscriptDelimiter "\V(\|)\|[\|]\|{\|}"
 
-syn keyword gdscriptKeyword null self owner parent
+syn keyword gdscriptKeyword null self owner parent tool
 syn keyword gdscriptBoolean false true
 
 syn keyword gdscriptStatement remote master puppet remotesync mastersync puppetsync sync
