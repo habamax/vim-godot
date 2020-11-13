@@ -208,3 +208,20 @@ call ale#linter#Define('gdscript', {
 . Save and restart
 
 NOTE: This is not a comprehensive ALE setup guide. Make sure to adjust it to your needs.
+
+
+== Setting up ctags
+
+Put the following contents:
+
+[source]
+------------------------------------------------------------------------------
+--langdef=GDScript
+--langmap=GDScript:.gd
+--regex-GDScript=/^func[ \t]+([a-zA-Z0-9_]+)/\1/f,function,function definitions/
+--regex-GDScript=/^(onready[ \t]+)?var[ \t]+([a-zA-Z0-9_]+)/\2/v,variable,variable definitions/
+--regex-GDScript=/^(export[ \t]*(.*)?[ \t]+)?var[ \t]+([a-zA-Z0-9_]+)/\3/v,variable,variable definitions/
+------------------------------------------------------------------------------
+
+* `~/.ctags.d/gdscript.ctags` if you use https://ctags.io/[universal ctags] or
+* `~/.ctags` if you use http://ctags.sourceforge.net/[exuberant ctags]
