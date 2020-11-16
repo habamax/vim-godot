@@ -10,13 +10,14 @@ endif
 syn keyword gdscriptConditional if else elif match switch case
 syn keyword gdscriptRepeat for while break continue
 
-syn match gdscriptClass "\v<\u\w+>"
-syn match gdscriptConstant "\<[_A-Z]\+[0-9_A-Z]*\>"
-
 syn keyword gdscriptOperator is as not and or in
-syn match gdscriptOperator "\V&&\|||\|!\|&\|^\||\|~\|*\|/\|%\|+\|-\|=\|<\|>\|:"
 
-syn match gdscriptDelimiter "\V(\|)\|[\|]\|{\|}"
+if get(g:, "godot_ext_hl", v:true)
+    syn match gdscriptClass "\v<\u\w+>"
+    syn match gdscriptConstant "\<[_A-Z]\+[0-9_A-Z]*\>"
+    syn match gdscriptOperator "\V&&\|||\|!\|&\|^\||\|~\|*\|/\|%\|+\|-\|=\|<\|>\|:"
+    syn match gdscriptDelimiter "\V(\|)\|[\|]\|{\|}"
+endif
 
 syn keyword gdscriptKeyword null self owner parent tool
 syn keyword gdscriptBoolean false true
@@ -45,7 +46,9 @@ syn keyword gdscriptStatement class func signal nextgroup=gdscriptFunctionName s
 syn match gdscriptFunctionName "\h\w*" nextgroup=gdscriptFunctionParams display contained skipwhite
 syn match gdscriptFunctionParams "(.*)" contains=gdscriptDelimiter,gdscriptTypeDecl display contained skipwhite
 
-syn match gdscriptFunctionCall "\v<\w*>\s*(\()@="
+if get(g:, "godot_ext_hl", v:true)
+    syn match gdscriptFunctionCall "\v<\w*>\s*(\()@="
+endif
 
 syn match gdscriptNode "\$\h\w*\%(/\h\w*\)*"
 
@@ -83,8 +86,8 @@ hi def link gdscriptBoolean Boolean
 hi def link gdscriptOperator Operator
 hi def link gdscriptRepeat Repeat
 hi def link gdscriptSetGet Function
+hi def link gdscriptFunctionName Function
 if get(g:, "godot_ext_hl", v:true)
-    hi def link gdscriptFunctionName Function
     hi def link gdscriptClass Type
     hi def link gdscriptFunctionCall Function
     hi def link gdscriptDelimiter Delimiter
