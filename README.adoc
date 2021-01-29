@@ -34,6 +34,23 @@ https://www.youtube.com/watch?v=ALXN4HJ5bsg
 * Use `:GodotRun <TAB>` to select a scene and run it. `:GodotRun<CR>` will run main scene.
 * Use `:GodotRunFZF<CR>` to select a scene using FZF (if installed) and run it.
 
+Note that commands assume godot executable is on your `PATH`, i.e. you can run `godot` from your terminal.
+If this is not the case, specify it in your settings:
+
+.For windows
+[source,vim]
+------------------------------------------------------------------------------
+" windows example
+let g:godot_executable = 'C:/Path/To/Godot/godot.exe'
+------------------------------------------------------------------------------
+
+.For OSX
+[source,vim]
+------------------------------------------------------------------------------
+" OSX example
+let g:godot_executable = '/Applications/Godot.app'
+------------------------------------------------------------------------------
+
 image::https://user-images.githubusercontent.com/234774/80359547-a5fc6c00-8886-11ea-9cdd-bc027d46db4c.gif[]
 
 

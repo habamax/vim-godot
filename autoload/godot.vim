@@ -63,7 +63,7 @@ func! s:run_scene(scene_name) abort
         call system('cmd.exe /c start ' . godot_command)
     elseif exists(':Spawn')
         execute 'Spawn ' . godot_command
-    elseif has("mac") " XXX: need test
+    elseif has("mac")
         call system('open ' . godot_command)
     else
         call system(godot_command)
