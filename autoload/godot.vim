@@ -124,12 +124,12 @@ func! godot#fzf_run_scene(...)
 
     let project_path = s:project_path()
 
-    if executable('fdfind')
-        let scenes = 'fdfind -e tscn --type f --hidden --follow --no-ignore-vcs --exclude .git'
-    elseif executable('fd')
+    if executable('fd')
         let scenes = 'fd -e tscn --type f --hidden --follow --no-ignore-vcs --exclude .git'
     elseif executable('rg')
-        let scenes ='rg -g *.tscn --files --no-ignore-vcs '
+        let scenes ='rg -g *.tscn --files --no-ignore-vcs'
+    elseif executable('find')
+        let scenes ='find . -name "*.tscn"'
     else
         let scenes = split(globpath(project_path, "**/*.tscn"), "\n")
     endif
