@@ -246,3 +246,13 @@ Put the following contents:
 * `~/.ctags.d/gdscript.ctags` if you use https://ctags.io/[universal ctags] or
 * `~/.ctags` if you use http://ctags.sourceforge.net/[exuberant ctags]
 
+
+== Setup vim as an external editor for Godot
+
+Note I didn't try it myself, but @macmv https://github.com/habamax/vim-godot/issues/29[had provided] some info about it.
+
+Open menu `Editor/Editor Settings/` then navigate to `General/External/`:
+
+* Tick `Use external editor`
+* Add `vim` to `Exec Path`
+* Add `--servername godot --remote-send "<C-\><C-N>:n {file}<CR>{line}G{col}|"` to `Exec Flags`
