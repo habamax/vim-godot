@@ -54,6 +54,9 @@ let g:godot_executable = '/Applications/Godot.app'
 image::https://user-images.githubusercontent.com/234774/80359547-a5fc6c00-8886-11ea-9cdd-bc027d46db4c.gif[]
 
 
+NOTE: To run game or a scene in "async way" install either https://github.com/tpope/vim-dispatch[vim-dispatch] or https://github.com/skywind3000/asyncrun.vim[asyncrun.vim].
+
+
 == Settings
 
 No default mappings are provided.
@@ -242,3 +245,4 @@ Put the following contents:
 
 * `~/.ctags.d/gdscript.ctags` if you use https://ctags.io/[universal ctags] or
 * `~/.ctags` if you use http://ctags.sourceforge.net/[exuberant ctags]
+
