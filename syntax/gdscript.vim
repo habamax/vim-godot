@@ -67,14 +67,12 @@ syn match gdscriptEscape "\\$"
 syn match gdscriptBlockStart ":\s*$"
 
 " Numbers
-syn match gdscriptNumber "\<0[oO]\=\o\+[Ll]\=\>"
-syn match gdscriptNumber "\<0[xX]\x\+[Ll]\=\>"
-syn match gdscriptNumber "\<0[bB][01]\+[Ll]\=\>"
-syn match gdscriptNumber "\<\%([1-9]\d*\|0\)[Ll]\=\>"
-syn match gdscriptNumber "\<\d\+[jJ]\>"
-syn match gdscriptNumber "\<\d\+[eE][+-]\=\d\+[jJ]\=\>"
-syn match gdscriptNumber "\<\d\+\.\%([eE][+-]\=\d\+\)\=[jJ]\=\%(\W\|$\)\@="
-syn match gdscriptNumber "\%(^\|\W\)\zs\d*\.\d\+\%([eE][+-]\=\d\+\)\=[jJ]\=\>"
+syn match gdscriptNumber "\<0x\%(_\=\x\)\+\>"
+syn match gdscriptNumber "\<0b\%(_\=[01]\)\+\>"
+syn match gdscriptNumber "\<\d\%(_\=\d\)*\>"
+syn match gdscriptNumber "\<\d\%(_\=\d\)*\%(e[+-]\=\d\%(_\=\d\)*\)\=\>"
+syn match gdscriptNumber "\<\d\%(_\=\d\)*\.\%(e[+-]\=\d\%(_\=\d\)*\)\=\%(\W\|$\)\@="
+syn match gdscriptNumber "\%(^\|\W\)\@1<=\%(\d\%(_\=\d\)*\)\=\.\d\%(_\=\d\)*\%(e[+-]\=\d\%(_\=\d\)*\)\=\>"
 
 " XXX, TODO, etc
 syn keyword gdscriptTodo TODO XXX FIXME HACK NOTE BUG contained
