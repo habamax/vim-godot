@@ -46,12 +46,19 @@ command! -buffer GodotRunLast call godot#run_last()
 command! -buffer -nargs=? -complete=customlist,godot#scene_complete GodotRun call godot#run(<q-args>)
 command! -buffer GodotRunFZF call godot#fzf_run_scene()
 
-func! s:next_section_start(dir) abort
-    call search('\(^\s*func\s\)\|\([{[]\s*$\)', 'W'..a:dir)
+func! s:section_start(back, cnt) abort
+    for n in range(a:cnt)
+        call search('\(^\s*func\s\)\|\([{[]\s*$\)', a:back ? 'bW' : 'W')
+    endfor
 endfunc
 
-nnoremap <silent><buffer> ]] :call <sid>next_section_start('')<CR>
-nnoremap <silent><buffer> [[ :call <sid>next_section_start('b')<CR>
+
+"" Next/Previous section mappings
+nnoremap <silent><buffer>   ]] :<c-u>call <sid>section_start(0, v:count1)<CR>
+nnoremap <silent><buffer>   [[ :<c-u>call <sid>section_start(1, v:count1)<CR>
+xmap <silent><buffer><expr> ]] "\<esc>".v:count1.']]m>gv'
+xmap <silent><buffer><expr> [[ "\<esc>".v:count1.'[[m>gv'
+
 
 let &cpo = s:keepcpo
 unlet s:keepcpo
