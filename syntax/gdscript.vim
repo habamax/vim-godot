@@ -17,6 +17,7 @@ if get(g:, "godot_ext_hl", v:true)
     syn match gdscriptConstant "\<[_A-Z]\+[0-9_A-Z]*\>"
     syn match gdscriptOperator "\V&&\|||\|!\|&\|^\||\|~\|*\|/\|%\|+\|-\|=\|<\|>\|:"
     syn match gdscriptDelimiter "\V(\|)\|[\|]\|{\|}"
+    syn match gdscriptBlockStart ":\s*$"
 endif
 
 syn keyword gdscriptKeyword null self owner parent tool
@@ -64,7 +65,6 @@ syn region gdscriptString matchgroup=gdscriptTripleQuotes
 
 syn match gdscriptEscape +\\[abfnrtv'"\\]+ contained
 syn match gdscriptEscape "\\$"
-syn match gdscriptBlockStart ":\s*$"
 
 " Numbers
 syn match gdscriptNumber "\<0x\%(_\=\x\)\+\>"
