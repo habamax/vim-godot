@@ -7,7 +7,7 @@ let b:did_ftplugin = 1
 let s:keepcpo = &cpo
 set cpo&vim
 
-let b:undo_ftplugin = '|setlocal suffixesadd<'
+let b:undo_ftplugin = 'setlocal suffixesadd<'
       \ . '|setlocal noexpandtab<'
 
 setlocal suffixesadd=.shader,.gdshader
