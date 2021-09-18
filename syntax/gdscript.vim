@@ -30,7 +30,7 @@ syn keyword gdscriptStatement breakpoint assert
 syn keyword gdscriptStatement onready
 syn keyword gdscriptStatement class_name extends
 
-syn keyword gdscriptType void bool int float contained
+syn keyword gdscriptType void bool int float String contained
 
 syn keyword gdscriptStatement var nextgroup=gdscriptTypeDecl skipwhite
 syn keyword gdscriptStatement const nextgroup=gdscriptTypeDecl skipwhite
