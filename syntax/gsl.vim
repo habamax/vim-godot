@@ -7,8 +7,8 @@ if exists("b:current_syntax")
     finish
 endif
 
-syn keyword gslConditional if else
-syn keyword gslRepeat for while
+syn keyword gslConditional if else switch case default
+syn keyword gslRepeat for while do
 syn keyword gslStatement return discard
 syn keyword gslBoolean true false
 
