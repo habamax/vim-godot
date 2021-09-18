@@ -7,7 +7,7 @@ if exists("b:current_syntax")
     finish
 endif
 
-syn keyword gdscriptConditional if else elif match switch case
+syn keyword gdscriptConditional if else elif match
 syn keyword gdscriptRepeat for while break continue
 
 syn keyword gdscriptOperator is as not and or in
