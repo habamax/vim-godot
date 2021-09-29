@@ -247,7 +247,7 @@ Put the following contents:
 * `~/.ctags` if you use http://ctags.sourceforge.net/[exuberant ctags]
 
 
-== Seting up Neovim native lsp with nvim-cmp
+== Setting up Neovim native lsp with nvim-cmp
 Install the following plugins
 
 [source,vim]
