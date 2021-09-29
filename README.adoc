@@ -246,6 +246,45 @@ Put the following contents:
 * `~/.ctags.d/gdscript.ctags` if you use https://ctags.io/[universal ctags] or
 * `~/.ctags` if you use http://ctags.sourceforge.net/[exuberant ctags]
 
+== Seting up Neovim native lsp with nvim-cmp
+Install the flowing plugins
+
+[source,vim]
+------------------------------------------------------------------------------
+Plug 'neovim/nvim-lspconfig' 
+"A good completion plugin 
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
+------------------------------------------------------------------------------
+
+put this in your init.vim to set up the gdscript server and connecting cmp to it (the mappings are the official cmp mappings you can remove or change them)
+
+[source,vim]
+------------------------------------------------------------------------------
+set completeopt=menu,menuone,noselect
+
+lua << EOF
+require'lspconfig'.gdscript.setup{capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())}
+
+local cmp = require'cmp'
+
+cmp.setup({
+  mapping = {
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  },
+
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
+  }
+})
+EOF
+------------------------------------------------------------------------------
 
 == Setup vim as an external editor for Godot
 
