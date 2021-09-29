@@ -246,8 +246,9 @@ Put the following contents:
 * `~/.ctags.d/gdscript.ctags` if you use https://ctags.io/[universal ctags] or
 * `~/.ctags` if you use http://ctags.sourceforge.net/[exuberant ctags]
 
+
 == Seting up Neovim native lsp with nvim-cmp
-Install the flowing plugins
+Install the following plugins
 
 [source,vim]
 ------------------------------------------------------------------------------
@@ -286,6 +287,7 @@ cmp.setup({
 EOF
 ------------------------------------------------------------------------------
 
+
 == Setup vim as an external editor for Godot
 
 Note I didn't try it myself, but @macmv https://github.com/habamax/vim-godot/issues/29[had provided] some info about it.
@@ -295,3 +297,25 @@ Open menu `Editor/Editor Settings/` then navigate to `General/External/`:
 * Tick `Use external editor`
 * Add `vim` to `Exec Path`
 * Add `--servername godot --remote-send "<C-\><C-N>:n {file}<CR>{line}G{col}|"` to `Exec Flags`
+
+
+== Setup Neovim as an external editor for Godot
+
+All of the clientserver features were removed in Neovim so you have to install a python script to use them 
+
+https://github.com/mhinz/neovim-remote
+
+now navigate to the root of your godot project (where the project.godot is residing) and start a new Neovim like this
+
+[source]
+------------------------------------------------------------------------------
+nvim --listen godothost .
+------------------------------------------------------------------------------
+
+Open menu `Editor/Editor Settings/` then navigate to `General/External/`:
+
+* Tick `Use external editor`
+* Add `nvr` to `Exec Path`
+* Add `--servername godothost --remote {file}` to `Exec Flags`
+
+now when you click and a script in godot it will open it in a new buffer in Neovim
