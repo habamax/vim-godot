@@ -318,4 +318,4 @@ Open menu `Editor/Editor Settings/` then navigate to `General/External/`:
 * Add `nvr` to `Exec Path`
 * Add `--servername godothost --remote {file}` to `Exec Flags`
 
-now when you click and a script in godot it will open it in a new buffer in Neovim
+now when you click on a script in godot it will open it in a new buffer in Neovim.
