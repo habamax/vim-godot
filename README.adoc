@@ -312,6 +312,8 @@ now navigate to the root of your godot project (where the project.godot is resid
 nvim --listen godothost .
 ------------------------------------------------------------------------------
 
+Note that nvr doesn't work on Windows
+
 Open menu `Editor/Editor Settings/` then navigate to `General/External/`:
 
 * Tick `Use external editor`
