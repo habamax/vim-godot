@@ -38,8 +38,8 @@ syn match gslFloat "\v<\d*\.\d+(\.)@!>"
 syn match gslFloat "\v<\d*\.=\d+(e-=\d+)@="
 syn match gslExponent "\v(\d*\.=\d+)@<=e-=\d+>"
 
-syn match gslComment "\v//.*$"
-syn region gslComment start="/\*" end="\*/"
+syn match gslComment "\v//.*$" contains=@Spell
+syn region gslComment start="/\*" end="\*/" contains=@Spell
 syn keyword gslTodo TODO FIXME XXX NOTE BUG HACK OPTIMIZE containedin=gslComment
 
 hi def link gslConditional Conditional
