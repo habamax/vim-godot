@@ -246,6 +246,18 @@ Put the following contents:
 * `~/.ctags.d/gdscript.ctags` if you use https://ctags.io/[universal ctags] or
 * `~/.ctags` if you use http://ctags.sourceforge.net/[exuberant ctags]
 
+To use it together with tagbar, put following into your vimrc or init.vim:
+[source]
+------------------------------------------------------------------------------
+let g:tagbar_type_gdscript = {
+			\'ctagstype' :'gdscript',
+			\'kinds':[
+			\'v:variables',
+			\'f:functions',
+			\]
+			\}
+------------------------------------------------------------------------------
+
 
 == Setting up Neovim native lsp with nvim-cmp
 Install the following plugins
