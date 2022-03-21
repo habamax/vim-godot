@@ -7,6 +7,8 @@ if exists("b:current_syntax")
     finish
 endif
 
+syntax sync maxlines=100
+
 syn keyword gdscriptConditional if else elif match
 syn keyword gdscriptRepeat for while break continue
 
