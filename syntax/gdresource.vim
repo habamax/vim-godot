@@ -17,8 +17,8 @@ syn match gdResourceNumber "\%(^\|\W\)\@1<=\%(\d\%(_\=\d\)*\)\=\.\d\%(_\=\d\)*\%
 syn keyword gdResourceKeyword true false
 
 syn region gdResourceString
-      \ start=+[uU]\="+ end='"' skip="\\\\\|\\\z1"
-      \ contains=@Spell
+      \ start=+[uU]\="+ end='"' skip='\\\\\|\\"'
+      \ contains=@Spell keepend
 
 " Section
 syn region gdResourceSection matchgroup=gdResourceSectionDelimiter
@@ -37,12 +37,12 @@ syn match gdResourceSectionAttributeValue '\(=\s*\)\zs\S\+\ze' skipwhite
 
 
 " Section body
-syn match gdResourceAttribute '^\s*\S\+\s*=\s*\S\+'
+syn match gdResourceAttribute '^\s*\S\+\s*=.*$'
       \ skipwhite keepend
       \ contains=gdResourceAttributeName,gdResourceAttributeValue
 
 syn match gdResourceAttributeName '\S\+\ze\(\s*=\)' skipwhite contained
-syn match gdResourceAttributeValue '\(=\s*\)\zs\S\+\ze' skipwhite
+syn match gdResourceAttributeValue '\(=\s*\)\zs.*$' skipwhite
       \ contained
       \ contains=gdResourceString,gdResourceNumber,gdResourceKeyword
 
