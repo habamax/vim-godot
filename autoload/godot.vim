@@ -12,8 +12,10 @@ endfunc
 
 " Run current scene
 func! godot#run_current() abort
+    let cwd = getcwd()
     let scene_name = s:find_scene_name()
-    call s:run_scene(scene_name)
+
+    call s:run_scene(cwd . '/' . scene_name)
 endfunc
 
 
