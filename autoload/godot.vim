@@ -12,10 +12,8 @@ endfunc
 
 " Run current scene
 func! godot#run_current() abort
-    let cwd = getcwd()
-    let scene_name = s:find_scene_name()
-
-    call s:run_scene(cwd . '/' . scene_name)
+    let current_file = expand("%:p")
+    call s:run_scene(current_file)
 endfunc
 
 
