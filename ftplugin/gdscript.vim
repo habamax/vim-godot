@@ -9,6 +9,7 @@ set cpo&vim
 
 let b:undo_ftplugin = 'setlocal cinkeys<'
       \ . '|setlocal indentkeys<'
+      \ . '|setlocal comments<'
       \ . '|setlocal commentstring<'
       \ . '|setlocal suffixesadd<'
       \ . '|setlocal foldexpr<'
@@ -19,6 +20,7 @@ setlocal cinkeys-=0#
 setlocal indentkeys-=0#
 setlocal suffixesadd=.gd
 setlocal commentstring=#\ %s
+setlocal comments=b:#,fb:-
 setlocal foldignore=
 setlocal foldexpr=GDScriptFoldLevel()
 setlocal noexpandtab
