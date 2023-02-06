@@ -10,7 +10,7 @@ set cpo&vim
 let b:undo_ftplugin = 'setlocal suffixesadd<'
       \ . '|setlocal noexpandtab<'
 
-setlocal suffixesadd=.shader,.gdshader
+setlocal suffixesadd=.shader,.gdshader,.gdshaderinc
 setlocal noexpandtab
 
 command! -buffer -nargs=? -complete=customlist,godot#scene_complete GodotRun call godot#run(<q-args>)
