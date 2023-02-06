@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead *.gdshader,*.shader set ft=gsl
+autocmd BufNewFile,BufRead *.gdshader,*gdshaderinc,*.shader set ft=gsl
