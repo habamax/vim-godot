@@ -171,7 +171,7 @@ let g:ycm_language_server += [
   \     'name': 'godot',
   \     'filetypes': [ 'gdscript' ],
   \     'project_root_files': [ 'project.godot' ],
-  \     'port': 6008
+  \     'port': 6005
   \   }
   \ ]
 ------------------------------------------------------------------------------
@@ -193,7 +193,7 @@ for me and hopefully would work for you.
         "godot": {
             "host": "127.0.0.1",
             "filetypes": ["gdscript"],
-            "port": 6008
+            "port": 6005
         }
     }
 }
@@ -202,6 +202,9 @@ for me and hopefully would work for you.
 
 NOTE: This is not a comprehensive `coc.nvim` setup guide. It just works for me
 and hopefully would work for you.
+
+* To find which port is correct for your version of the Godot Engine, go to
+  `Editor > Editor Settings > Network > Language Server`
 
 == Setting up ale for Godot 3.2.2+
 
