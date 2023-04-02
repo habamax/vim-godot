@@ -321,13 +321,13 @@ now navigate to the root of your godot project (where the project.godot is resid
 
 [source]
 ------------------------------------------------------------------------------
-nvim --listen godothost .
+nvim --listen ./godothost .
 ------------------------------------------------------------------------------
 
 Open menu `Editor/Editor Settings/` then navigate to `General/External/`:
 
 * Tick `Use external editor`
 * Add `nvr` to `Exec Path`
-* Add `--servername godothost --remote-send "<C-\><C-N>:n {file}<CR>:call cursor({line},{col})<CR>"` to `Exec Flags`
+* Add `--servername ./godothost --remote-send "<C-\><C-N>:n {file}<CR>:call cursor({line},{col})<CR>"` to `Exec Flags`
 
 now when you click on a script in godot it will open it in a new buffer in Neovim.
