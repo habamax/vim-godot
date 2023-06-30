@@ -316,21 +316,19 @@ Open menu `Editor/Editor Settings/` then navigate to `General/External/`:
 
 == Setup Neovim as an external editor for Godot
 
-All of the clientserver features were removed in Neovim so you have to install a python script to use them 
-
-https://github.com/mhinz/neovim-remote
-
-now navigate to the root of your godot project (where the project.godot is residing) and start a new Neovim like this
+Navigate to the root of your godot project (where the project.godot is residing) and start a new Neovim like this:
 
 [source]
 ------------------------------------------------------------------------------
-nvim --listen ./godothost .
+nvim --listen ./godothost
 ------------------------------------------------------------------------------
+
+(on Windows you might have to specify a IP:port combination instead, like "127.0.0.1:9696")
 
 Open menu `Editor/Editor Settings/` then navigate to `General/External/`:
 
 * Tick `Use external editor`
-* Add `nvr` to `Exec Path`
-* Add `--servername ./godothost --remote-send "<C-\><C-N>:n {file}<CR>:call cursor({line},{col})<CR>"` to `Exec Flags`
+* Add `nvim` to `Exec Path`
+* Add `--server ./godothost --remote-send "<C-\><C-N>:n {file}<CR>{line}G{col}|"` to `Exec Flags`
 
 now when you click on a script in godot it will open it in a new buffer in Neovim.
