@@ -8,6 +8,7 @@ let s:keepcpo = &cpo
 set cpo&vim
 
 let b:undo_ftplugin = 'setlocal cinkeys<'
+      \ . '|setlocal includeexpr<'
       \ . '|setlocal indentkeys<'
       \ . '|setlocal comments<'
       \ . '|setlocal commentstring<'
@@ -60,6 +61,8 @@ nnoremap <silent><buffer>   ]] :<c-u>call <sid>section_start(0, v:count1)<CR>
 nnoremap <silent><buffer>   [[ :<c-u>call <sid>section_start(1, v:count1)<CR>
 xmap <silent><buffer><expr> ]] "\<esc>".v:count1.']]m>gv'
 xmap <silent><buffer><expr> [[ "\<esc>".v:count1.'[[m>gv'
+
+setlocal includeexpr=godot#convert_res_to_file_path(v:fname)
 
 
 let &cpo = s:keepcpo
