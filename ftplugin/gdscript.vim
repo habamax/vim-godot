@@ -14,7 +14,6 @@ let b:undo_ftplugin = 'setlocal cinkeys<'
       \ . '|setlocal suffixesadd<'
       \ . '|setlocal foldexpr<'
       \ . '|setlocal foldignore<'
-      \ . '|setlocal noexpandtab<'
 
 setlocal cinkeys-=0#
 setlocal indentkeys-=0#

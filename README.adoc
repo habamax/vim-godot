@@ -8,6 +8,8 @@
 
 == Intro
 
+Same as `habamax/vim-godot`, but without the nonsense `noexpandtab`.
+
 Godot engine has rock solid built-in editor but I still feel more comfortable
 within my (g)(n)vim environment.
 
