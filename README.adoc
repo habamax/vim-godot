@@ -48,7 +48,7 @@ let g:godot_executable = 'C:/Path/To/Godot/godot.exe'
 [source,vim]
 ------------------------------------------------------------------------------
 " OSX example
-let g:godot_executable = '/Applications/Godot.app'
+let g:godot_executable = '/Applications/Godot.app/Contents/MacOS/Godot'
 ------------------------------------------------------------------------------
 
 image::https://user-images.githubusercontent.com/234774/80359547-a5fc6c00-8886-11ea-9cdd-bc027d46db4c.gif[]
