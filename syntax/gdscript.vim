@@ -39,8 +39,8 @@ syn keyword gdscriptStatement const nextgroup=gdscriptTypeDecl skipwhite
 syn match gdscriptTypeDecl "\h\w*\s*:\s*\h\w*" contains=gdscriptOperator,gdscriptType,gdscriptClass contained skipwhite
 syn match gdscriptTypeDecl "->\s*\h\w*" contains=gdscriptOperator,gdscriptType,gdscriptClass skipwhite
 
-syn keyword gdscriptStatement export nextgroup=gdscriptExportTypeDecl skipwhite
-syn match gdscriptExportTypeDecl "(.\{-}[,)]" contains=gdscriptOperator,gdscriptType,gdscriptClass,gdscriptDelimiter contained skipwhite
+syn match gdscriptStatement "@[a-z]*_*[a-z]*" nextgroup=gdscriptAnnotationTypeDecl skipwhite
+syn match gdscriptAnnotationTypeDecl "(.\{-}[,)]" contains=gdscriptOperator,gdscriptType,gdscriptClass,gdscriptDelimiter contained skipwhite
 
 syn keyword gdscriptStatement setget nextgroup=gdscriptSetGet,gdscriptSetGetSeparator skipwhite
 syn match gdscriptSetGet "\h\w*" nextgroup=gdscriptSetGetSeparator display contained skipwhite
