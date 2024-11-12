@@ -54,7 +54,7 @@ if get(g:, "godot_ext_hl", v:true)
     syn match gdscriptFunctionCall "\v<\w*>\s*(\()@="
 endif
 
-syn match gdscriptNode "\$\h\w*\%(/\h\w*\)*"
+syn match gdscriptNode "[\$\%]\h\w*\%(/\h\w*\)*"
 
 syn match gdscriptComment "#.*$" contains=@Spell,gdscriptTodo
 
