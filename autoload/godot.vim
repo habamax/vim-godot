@@ -157,7 +157,6 @@ func! godot#convert_res_to_file_path(res_path) abort
     " separators, they'll be treated as escapes.
     let trimmed = substitute(fpath, "^res:/", "", "")
 
-    let g:test_david = ["godot#convert_res_to_file_path", fpath, trimmed, s:project_path()]
     if len(trimmed) < len(fpath)
         let fpath = s:project_path() .. trimmed
         if filereadable(fpath)
