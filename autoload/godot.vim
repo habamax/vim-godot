@@ -88,7 +88,14 @@ endfunc
 
 " Return project path
 func! s:project_path() abort
-    return fnamemodify(findfile("project.godot", ".;"), ":h")
+    " Search from multiple locations so we work even from res:// paths
+    let dirs = ['.', expand("#:p:h")]
+    for d in dirs
+        let root = findfile("project.godot", d ..";")
+        if filereadable(root)
+            return fnamemodify(root, ":h")
+        endif
+    endfor
 endfunc
 
 
@@ -142,3 +149,31 @@ func! godot#fzf_run_scene(...)
                 \}, 0))
 
 endfunc
+
+func! godot#convert_res_to_file_path(res_path) abort
+    let fpath = a:res_path
+
+    " Can't use root in substitute because if it contains backslash directory
+    " separators, they'll be treated as escapes.
+    let trimmed = substitute(fpath, "^res:/", "", "")
+
+    if len(trimmed) < len(fpath)
+        let fpath = s:project_path() .. trimmed
+        if filereadable(fpath)
+            return fpath
+        endif
+    endif
+    
+    return a:res_path
+endfunc
+
+
+func! godot#edit_res_path(res_path) abort
+    let fpath = godot#convert_res_to_file_path(a:res_path)
+    if filereadable(fpath)
+        exec "keepalt edit" fpath
+    else
+        exec "noautocmd edit" a:res_path
+    endif
+endfunc
+
